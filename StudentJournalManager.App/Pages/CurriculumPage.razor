@@ -1,0 +1,31 @@
+﻿@page "/Curriculum"
+@using Student_Journal_Manager.Models
+@using Student_Journal_Manager.Services
+@inject ILessonService lessonService
+@inject NavigationManager navigationManager
+<h3>Curriculum</h3>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; height: 40vh; width: 80vw;">
+    @foreach (var lesson in lessonList)
+    {
+        <div style="width: 40%; height: 40%; margin: 1rem; background-color: lightgray; border: 1px solid black; display: flex; justify-content: center; align-items: center;">
+            <p>@lesson.LessonName</p>
+            <button @onclick="() => NavigateToAttendanceTable(lesson.Id, lesson.LessonName)">Go to Attendance</button>
+        </div>
+    }
+</div>
+
+@code {
+    private List<Lesson> lessonList = new List<Lesson>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        lessonList = await lessonService.GetAllLessons();
+    }
+
+    private void NavigateToAttendanceTable(int lessonId, string lessonName)
+    {
+        navigationManager.NavigateTo($"/AttendanceTable/{lessonId}/{lessonName}");
+    }
+
+}

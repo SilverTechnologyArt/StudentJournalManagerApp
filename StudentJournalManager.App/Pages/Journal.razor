@@ -1,0 +1,92 @@
+﻿@page "/Journal"
+
+<PageTitle>Journal</PageTitle>
+
+<h1>Journal</h1>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: 10%;
+      font-weight: bold;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 5%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: lightgray;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lesson</h1>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>LessonName</th>
+      <th>Data</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Math</td>
+      <td>2023-07-01</td>
+    </tr>
+
+    <!-- Dodaj więcej wierszy z danymi -->
+  </table>
+
+  <h1>Student Attendance</h1>
+  <table>
+    <tr>
+      <th>Student ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Attendance</th>
+      <th>Hours</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>John</td>
+      <td>Doe</td>
+      <td>Present</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Jane</td>
+      <td>Smith</td>
+      <td>Absent</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Jane</td>
+      <td>Smith</td>
+      <td>Absent</td>
+      <td>0</td>
+    </tr>
+    <!-- Dodaj więcej wierszy z danymi -->
+  </table>
+</body>
+</html>
+
+
+@code {
+
+}

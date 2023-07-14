@@ -1,0 +1,188 @@
+﻿@page "/AttendanceTable/{lessonId}/{lessonName}"
+@using Student_Journal_Manager.Models
+@using Student_Journal_Manager.Services
+@inject IStudentService studentService
+@inject IAttendanceService attendanceService
+
+<h3>Attendance</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="11">@LessonName</th>
+        </tr>
+        <tr>
+            <th>Student</th>
+            @for (int i = 1; i <= 10; i++)
+            {
+                <th>Date @i</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in studentList)
+        {
+            <tr>
+                <td>@student.FirstName @student.LastName</td>
+                @for (int i = 1; i <= 10; i++)
+                {
+                    int currentIndex = i;
+                    int hours = GetHoursValue(student, currentIndex);
+                    bool isSaved = IsAttendanceSaved(student, currentIndex);
+                    <td>
+                        @if (isSaved)
+                        {
+                            @hours
+                        }
+                        else
+                        {
+                            <input type="number" min="0" max="9" step="1" value="@hours" @onchange="e => SetHoursValue(student, currentIndex, int.Parse(e.Value.ToString()))" />
+                        }
+                    </td>
+                }
+            </tr>
+        }
+        <tr>
+            <td></td>
+            @for (int i = 1; i <= 10; i++)
+            {
+                int currentIndex = i;
+                bool isSaved = IsAttendanceSaved(null, currentIndex);
+                <td>
+                    @if (isSaved)
+                    {
+                        <button disabled>Saved</button>
+                    }
+                    else
+                    {
+                        <input type="date" @onchange="e => SetDateValue(currentIndex, e.Value.ToString())" />
+                        <button @onclick="() => SaveAttendance(currentIndex)">Save Attendance</button>
+                    }
+                </td>
+            }
+        </tr>
+    </tbody>
+</table>
+
+@code {
+    private List<Student> studentList = new List<Student>();
+    private string lessonName;
+    private Dictionary<int, DateTime?> dateValues = new Dictionary<int, DateTime?>();
+    private Dictionary<int, Dictionary<int, int>> hoursValues = new Dictionary<int, Dictionary<int, int>>();
+    private Dictionary<int, HashSet<int>> savedAttendances = new Dictionary<int, HashSet<int>>();
+
+    [Parameter]
+    public string LessonName { get; set; }
+
+    [Parameter]
+    public string LessonId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        studentList = await studentService.GetAllStudents();
+        InitializeHoursValues();
+    }
+
+    private void InitializeHoursValues()
+    {
+        foreach (var student in studentList)
+        {
+            hoursValues[student.Id] = new Dictionary<int, int>();
+            savedAttendances[student.Id] = new HashSet<int>();
+        }
+    }
+
+    private int GetHoursValue(Student student, int index)
+    {
+        if (student != null && hoursValues.ContainsKey(student.Id))
+        {
+            var studentHours = hoursValues[student.Id];
+            return studentHours.GetValueOrDefault(index);
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    private bool IsAttendanceSaved(Student student, int index)
+    {
+        if (student != null && savedAttendances.ContainsKey(student.Id))
+        {
+            var savedIndices = savedAttendances[student.Id];
+            return savedIndices.Contains(index);
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private void SetHoursValue(Student student, int index, int value)
+    {
+        if (student != null)
+        {
+            if (hoursValues.ContainsKey(student.Id))
+            {
+                var studentHours = hoursValues[student.Id];
+                studentHours[index] = value;
+            }
+            else
+            {
+                hoursValues[student.Id] = new Dictionary<int, int>();
+                hoursValues[student.Id][index] = value;
+            }
+        }
+    }
+
+    private async Task SaveAttendance(int index)
+    {
+        DateTime? date = GetDateValue(index);
+
+        if (date.HasValue)
+        {
+            foreach (var student in studentList)
+            {
+                if (!IsAttendanceSaved(student, index))
+                {
+                    int hours = GetHoursValue(student, index);
+
+                    Attendance attendance = new Attendance
+                    {
+                        StudentId = student.Id,
+                        LessonId = int.Parse(LessonId),
+                        Date = date.Value,
+                        Hours = new int[] { hours }
+                    };
+
+                    await attendanceService.SaveAttendance(attendance);
+                    savedAttendances[student.Id].Add(index);
+                }
+            }
+        }
+    }
+
+    private void SetDateValue(int index, string value)
+    {
+        if (DateTime.TryParse(value, out var date))
+        {
+            dateValues[index] = date;
+        }
+        else
+        {
+            dateValues[index] = null;
+        }
+    }
+
+    private DateTime? GetDateValue(int index)
+    {
+        if (dateValues.ContainsKey(index))
+        {
+            return dateValues[index];
+        }
+        else
+        {
+            return null;
+        }
+    }
+}

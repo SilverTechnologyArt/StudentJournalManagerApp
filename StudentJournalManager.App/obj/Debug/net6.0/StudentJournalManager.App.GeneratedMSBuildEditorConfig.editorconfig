@@ -1,0 +1,68 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = StudentJournalManager.App
+build_property.RootNamespace = StudentJournalManager.App
+build_property.ProjectDir = C:\Users\NorinraDD\source\repos\Student Journal Manager\StudentJournalManager.App\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\NorinraDD\source\repos\Student Journal Manager\StudentJournalManager.App
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/NorinraDD/source/repos/Student Journal Manager/StudentJournalManager.App/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NorinraDD/source/repos/Student Journal Manager/StudentJournalManager.App/Pages/AttendanceTablePage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXR0ZW5kYW5jZVRhYmxlUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NorinraDD/source/repos/Student Journal Manager/StudentJournalManager.App/Pages/CurriculumPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VycmljdWx1bVBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NorinraDD/source/repos/Student Journal Manager/StudentJournalManager.App/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NorinraDD/source/repos/Student Journal Manager/StudentJournalManager.App/Pages/Journal.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSm91cm5hbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NorinraDD/source/repos/Student Journal Manager/StudentJournalManager.App/Pages/LessonsPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGVzc29uc1BhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NorinraDD/source/repos/Student Journal Manager/StudentJournalManager.App/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NorinraDD/source/repos/Student Journal Manager/StudentJournalManager.App/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NorinraDD/source/repos/Student Journal Manager/StudentJournalManager.App/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-hyrs659uit
+
+[C:/Users/NorinraDD/source/repos/Student Journal Manager/StudentJournalManager.App/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-xekhq2n430
+
+[C:/Users/NorinraDD/source/repos/Student Journal Manager/StudentJournalManager.App/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NorinraDD/source/repos/Student Journal Manager/StudentJournalManager.App/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NorinraDD/source/repos/Student Journal Manager/StudentJournalManager.App/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

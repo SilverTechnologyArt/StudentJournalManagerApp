@@ -1,0 +1,63 @@
+﻿@page "/lessons"
+@using Student_Journal_Manager.Models
+@using Student_Journal_Manager.Services;
+@inject ILessonService lessonService
+
+<h1>Lesson</h1>
+
+<style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: 10%;
+      font-weight: bold;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 5%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: lightgray;
+    }
+</style>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Lesson Name</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lesson in lessonList)
+        {
+            <tr>
+                <td>@lesson.Id</td>
+                <td>@lesson.LessonName</td>
+                <td>@lesson.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<Lesson> lessonList = new List<Lesson>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        lessonList = await lessonService.GetAllLessons();
+    }
+}
+
